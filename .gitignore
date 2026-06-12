@@ -34,3 +34,7 @@ Thumbs.db
 # ── Docker volumes (local dev) ─────────────────────��──────
 data/
 volumes/
+
+# Knowledge base cho RAG agent Lab 06 (override global data/ ignore)
+!06-lab-complete/data/
+!06-lab-complete/data/**

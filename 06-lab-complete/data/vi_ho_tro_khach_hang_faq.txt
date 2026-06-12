@@ -1,0 +1,13 @@
+Câu Hỏi Thường Gặp Cho Đội Hỗ Trợ Khách Hàng
+
+Đội hỗ trợ sử dụng trợ lý tri thức nội bộ để trả lời nhanh các câu hỏi lặp đi lặp lại về thiết lập tài khoản, lỗi thanh toán, khôi phục mật khẩu, và giới hạn dịch vụ. Để retrieval hữu ích, mỗi tài liệu được lập chỉ mục nên mô tả vấn đề rõ ràng kèm các bước xử lý cụ thể.
+
+Làm sao để đặt lại mật khẩu? Người dùng vào trang đăng nhập, chọn "Quên mật khẩu", nhập email đã đăng ký, sau đó làm theo đường dẫn được gửi trong email để tạo mật khẩu mới. Nếu email không đến trong năm phút, hãy kiểm tra thư mục spam và xác nhận địa chỉ email nhập đúng.
+
+Vì sao thanh toán bị từ chối? Lỗi thanh toán thường do thẻ hết hạn, số dư không đủ, hoặc ngân hàng chặn giao dịch quốc tế. Hướng dẫn khách kiểm tra thông tin thẻ, thử lại sau vài phút, hoặc liên hệ ngân hàng nếu vấn đề tiếp diễn. Mọi giao dịch thất bại đều được ghi log để đội kỹ thuật tra cứu.
+
+Làm sao để nâng cấp gói dịch vụ? Khách hàng vào mục Cài đặt, chọn Gói dịch vụ, rồi chọn gói mong muốn. Việc nâng cấp có hiệu lực ngay và chi phí được tính theo tỉ lệ thời gian còn lại của chu kỳ thanh toán hiện tại.
+
+Giới hạn của gói miễn phí là gì? Gói miễn phí cho phép một số lượng truy vấn nhất định mỗi tháng và dung lượng lưu trữ giới hạn. Khi chạm giới hạn, hệ thống sẽ thông báo và gợi ý nâng cấp. Dữ liệu của khách không bị xóa khi đạt giới hạn, chỉ tạm ngừng tạo mới cho tới đầu chu kỳ sau.
+
+Khi nào nên chuyển vấn đề lên cấp cao hơn? Nếu câu hỏi vượt ngoài các tình huống chuẩn, hoặc khách đã thử các bước gợi ý mà chưa giải quyết được, nhân viên nên chuyển ticket lên đội kỹ thuật kèm toàn bộ thông tin đã thu thập. Việc ghi chú đầy đủ giúp đội sau xử lý nhanh và tránh hỏi lại khách những điều đã hỏi.

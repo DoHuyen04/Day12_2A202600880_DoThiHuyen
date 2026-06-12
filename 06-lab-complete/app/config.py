@@ -1,4 +1,7 @@
-"""Production config — 12-Factor: tất cả từ environment variables."""
+"""Production config — 12-Factor: tất cả từ environment variables.
+
+Dự án: KnowledgeBaseAgent (RAG) — productionized cho Day 12.
+"""
 import os
 import logging
 from dataclasses import dataclass, field
@@ -13,16 +16,24 @@ class Settings:
     debug: bool = field(default_factory=lambda: os.getenv("DEBUG", "false").lower() == "true")
 
     # App
-    app_name: str = field(default_factory=lambda: os.getenv("APP_NAME", "Production AI Agent"))
+    app_name: str = field(default_factory=lambda: os.getenv("APP_NAME", "KnowledgeBase RAG Agent"))
     app_version: str = field(default_factory=lambda: os.getenv("APP_VERSION", "1.0.0"))
 
-    # LLM
+    # LLM (mock by default — không cần API key, không tốn tiền)
     openai_api_key: str = field(default_factory=lambda: os.getenv("OPENAI_API_KEY", ""))
-    llm_model: str = field(default_factory=lambda: os.getenv("LLM_MODEL", "gpt-4o-mini"))
+    llm_model: str = field(default_factory=lambda: os.getenv("LLM_MODEL", "mock-rag-llm"))
+
+    # RAG
+    data_dir: str = field(default_factory=lambda: os.getenv("DATA_DIR", "data"))
+    top_k: int = field(default_factory=lambda: int(os.getenv("TOP_K", "3")))
+    chunk_max_chars: int = field(default_factory=lambda: int(os.getenv("CHUNK_MAX_CHARS", "700")))
+    # mock | local | openai  (mock = offline, deterministic)
+    embedding_provider: str = field(
+        default_factory=lambda: os.getenv("EMBEDDING_PROVIDER", "mock")
+    )
 
     # Security
     agent_api_key: str = field(default_factory=lambda: os.getenv("AGENT_API_KEY", "dev-key-change-me"))
-    jwt_secret: str = field(default_factory=lambda: os.getenv("JWT_SECRET", "dev-jwt-secret"))
     allowed_origins: list = field(
         default_factory=lambda: os.getenv("ALLOWED_ORIGINS", "*").split(",")
     )
@@ -32,23 +43,18 @@ class Settings:
         default_factory=lambda: int(os.getenv("RATE_LIMIT_PER_MINUTE", "20"))
     )
 
-    # Budget
+    # Budget (số request/ngày làm proxy cho cost — RAG mock không tốn tiền LLM)
     daily_budget_usd: float = field(
         default_factory=lambda: float(os.getenv("DAILY_BUDGET_USD", "5.0"))
     )
-
-    # Storage
-    redis_url: str = field(default_factory=lambda: os.getenv("REDIS_URL", ""))
 
     def validate(self):
         logger = logging.getLogger(__name__)
         if self.environment == "production":
             if self.agent_api_key == "dev-key-change-me":
                 raise ValueError("AGENT_API_KEY must be set in production!")
-            if self.jwt_secret == "dev-jwt-secret":
-                raise ValueError("JWT_SECRET must be set in production!")
         if not self.openai_api_key:
-            logger.warning("OPENAI_API_KEY not set — using mock LLM")
+            logger.warning("OPENAI_API_KEY not set — dùng mock embeddings + mock LLM")
         return self
 
 
